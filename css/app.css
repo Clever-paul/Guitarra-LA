@@ -1,0 +1,440 @@
+:root {
+  --primary: #e99401;
+  --negro: #262626;
+  --blanco: #fff;
+  --fuente-principal: "Outfit", sans-serif;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-size: 2rem;
+  font-family: var(--fuente-principal);
+  line-height: 1.5;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+/* utilidades */
+[class*="contenedor"]{ /* le decimos que seleccione todos lo que tengan contenedor tambien ^ eso les dira los que inician con contenedor Y $ selecciona los que finalizan con contenedor*/
+    max-width: 120rem;
+    margin: 0 auto;
+    width: 95%;
+}
+
+[class*="heading"]{
+    font-size: 4rem ;
+    text-align: center;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 5rem 0;
+}
+/* header */
+
+.header {
+  background-image: linear-gradient(
+    to right,
+    rgb(0 0 0 / 0.7),
+    rgb(0 0 0 / 0.7)
+  ), url(../img/header.jpg);
+  background-size: cover;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  padding: 5rem 0;
+  position: relative;
+}
+
+.header__guitarra{
+    display: none;
+}
+@media (min-width: 768px) { 
+    .header__guitarra{
+        display: block;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+
+/* 
+        animation-name: mostrarImagen; /*asi le decimos la animacion que usaremos  
+        animation-duration: 1s ; 
+        animation-delay: 0s; /* decirle que inicia despues de 1s 
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: 1; para decirle cuantas iteraciones ara la animacion 
+         */
+        /* como siempre se dice existe una manera mas simplificada de hacerlo  */
+        animation: 1s ease-in-out 0s mostrarImagen;
+    }
+}
+
+/* ahora veremos lo que son las tranciociones u/o animaciones */
+@keyframes mostrarImagen{
+    0% {
+        opacity: 0;
+        transform: translateX(-10rem);
+    }
+    50%{
+        opacity: 0;
+    }    100%{
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+.header__barra{
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+@media (min-width: 768px) { 
+    .header__barra{
+        flex-direction: row;
+        justify-content: space-between;
+        
+    }
+}
+
+.header__logo{
+    width: 30rem;
+}
+
+.navegacion{
+    display: flex;
+    gap: 2rem;
+    margin-top: 5rem;
+    position: relative;
+    z-index: 1;
+}
+@media (min-width: 768px) { 
+    .navegacion{
+        margin-top: 0;
+
+    }
+}
+.navegacion__enlace{
+    text-decoration: none;
+    color: var(--blanco);
+    padding: .5rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+    transition-property: background-color;
+    transition-duration: .3s;
+}
+
+.navegacion__enlace:hover{
+    background-color: var(--primary);
+}
+
+.modelo{
+    color: var(--blanco);
+    margin-top: 5rem;
+    text-align: center;
+}
+@media (min-width: 768px) { 
+    .modelo{
+        text-align: left;
+        width: 50%;
+    }
+}
+.modelo__nombre{
+    font-size: 8rem;
+}
+
+.modelo__precio{
+    font-size: 6rem;
+    font-weight: 900;
+    color: var(--primary);
+    line-height: 0;
+}
+
+.modelo__enlace{
+    margin-top: 2rem;
+    text-decoration: none;
+    padding: 1rem 5rem;
+    border: 2px solid var(--primary);
+    color: var(--blanco);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    transition-property: background-color;
+    transition-duration: .3s;
+}
+.modelo__enlace:hover{
+    background-color: var(--primary);
+}
+
+/* productos */
+
+.productos__grid{
+   display: grid;
+   gap: 4rem; 
+}
+@media (min-width: 768px) { 
+    .productos__grid{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (min-width: 1200px) { 
+    .productos__grid{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+.producto{
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    column-gap: 1rem;
+    align-items: center;
+}
+
+
+.producto__nombre{
+    font-size: 3rem;
+    text-transform: uppercase;
+}
+.producto__description{
+    font-size: 1.6rem;
+}
+.producto__precio{
+    color: var(--primary);
+    font-size: 6rem;
+    font-weight: 900;
+    margin: 0;
+}
+.producto__enlace{
+    margin-top: 2rem;
+    display: block;
+    text-decoration: none;
+    color: var(--negro);
+    border: 2px solid var(--primary);
+    text-align: center;
+    padding: 1rem 0;
+    font-weight: 900;
+    font-size: 1.2rem;
+    transition-property: background-color; /* cada hover siempre tiene su trancicion ctmr */
+    transition-duration: .3s;
+}
+
+.producto__enlace:hover{
+    background-color: var(--primary);
+    color: var(--blanco);
+}
+
+.producto__formulario{
+    display: flex;
+    flex-direction: column;
+}
+.producto__label{
+    font-size: 2.2rem;
+    margin-right: 1rem;
+}
+.producto__cantidad{
+    border: 2px solid var(--primary);
+    text-align: center;
+}
+
+.producto__agregar--carrito{
+    margin-top: 6rem;
+    display: block;
+    background-color: var(--primary);
+    text-decoration: none;
+    text-transform: uppercase;
+    border: none;
+    text-align: center;
+    padding: 2rem 5rem;
+    color: var(--blanco);
+    font-size: 1.8rem;
+    font-weight: 700;
+    transition-property: background-color;
+    transition-duration: .3s;
+
+}
+.producto__agregar--carrito:hover{
+    background-color: var(--negro);
+    cursor: pointer;
+}
+
+/* cursos */
+.cursos{
+    background-image: linear-gradient(to right, rgb(0 0 0 / .65), rgb(0 0 0 / .65)), url(../img/cursos_bg.jpg);
+    padding: 10rem 0;
+    background-repeat: no-repeat;
+    margin-top: 10rem;
+    background-size: cover;
+    background-position: 50%;
+    
+}
+@media (min-width: 768px) { 
+    .cursos__grid{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 2rem;
+    }
+
+}
+.cursos__contenido{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media (min-width: 768px) { 
+    .cursos__contenido{
+        grid-column: 2 / 3;
+    
+    }
+}
+.cursos__texto{
+    color: var(--blanco);
+    text-align: center;
+    font-size: 2.4rem;
+}
+.cursos__enlace{
+    padding: 1rem 5rem;
+    text-decoration: none;
+    color: var(--blanco);
+    border: 2px solid var(--primary);
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    font-weight: 700;
+    transition-property: background-color;
+    transition-duration: .3s;
+}
+.cursos__enlace:hover{
+    background-color: var(--primary);
+    color: var(--blanco);
+}
+
+/* blog */
+
+.blog__grid{
+    display: grid;
+    gap: 4rem;
+
+}
+
+@media (min-width: 768px) { 
+    .blog__grid{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 992px) { 
+    .blog__grid{
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .blog__grid--pagina{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+.entrada{
+    max-width: 80rem;
+    margin: auto 0;
+}
+.entrada__contenido{
+    padding: 2rem ;
+}
+.entrada__titulo{
+    font-weight: 400;
+    font-size: 2.8rem;
+    margin: 0;
+    line-height: 1.2;
+}
+.entrada__fecha{
+    font-size: 1.6rem;
+    color: var(--primary);
+}
+
+/* como hacer que el texto nunca pase de 4 lineas */
+.entrada__texto{
+    display: -webkit-box;/*  para ocultar el contenido  */
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    overflow: hidden; /* ocultas lo que queda despues de las 4 lineas  */
+
+    /* tiene prefijos por eso no es recomendable usarlo mucho */
+    /* lo que sobra ya no se puede visualizar simplemente queda cortado */
+
+}
+.entrada__enlace{
+    margin-top: 2rem;
+    display: block;
+    text-decoration: none;
+    color: var(--negro);
+    border: 2px solid var(--primary);
+    text-align: center;
+    padding: 1rem 0;
+    font-weight: 900;
+    font-size: 1.2rem;
+    transition-property: background-color; /* cada hover siempre tiene su trancicion ctmr */
+    transition-duration: .3s;
+}
+
+.entrada__enlace:hover{
+    background-color: var(--primary);
+    color: var(--blanco);
+}
+
+.footer{
+    margin-top: 5rem;
+    background-color: var(--negro);
+    padding: 5rem 0;
+}
+@media (min-width: 768px) { 
+    .footer__contenido{
+        display: flex;
+        justify-content: space-between;
+    }
+}
+.footer__nav{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+@media (min-width: 768px) { 
+    .footer__nav{
+        flex-direction: row;
+        
+    }
+}
+.footer__enlace{
+    font-size: 2.8rem;
+    color: var(--blanco);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.footer__copyright{
+    font-size: 2.8rem;
+    color: var(--blanco);
+    margin: 0;
+    font-weight: 700;
+    text-align: center;
+}
+
+/* pagina nosotros */
+.nostros__grid{
+    display: grid;
+    gap: 4rem;
+}
+@media (min-width: 768px) { 
+    .nostros__grid{
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+    }
+}
+
+
+/* pagina blog */
+
